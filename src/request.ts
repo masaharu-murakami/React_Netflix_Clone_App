@@ -1,5 +1,6 @@
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = "/discover/tv?api_key=";
+//const BASE_URL = "https://api.themoviedb.org/3";
 
 export const requests = {
   fetchTrending: `/trending/all/week?api_key=${API_KEY}&watch_region=JP&language=ja-JP`,
