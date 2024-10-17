@@ -9,9 +9,9 @@ type LayoutProps = {
 export const Layout = ({ title, movies, isLargeRow }: LayoutProps) => {
   const image_url = "https://image.tmdb.org/t/p/original";
   return (
-    <div className="ml-5 text-white">
+    <div className="ml-5 text-white ">
       <h2 className="text-black">{title}</h2>
-      <div className="flex overflow-hidden overflow-x-scroll p-5 scrollbar-hide">
+      <div className="flex overflow-y-hidden overflow-x-scroll p-5 scrollbar-hide">
         {movies.map((movie) => (
           <img
             key={movie.id}
