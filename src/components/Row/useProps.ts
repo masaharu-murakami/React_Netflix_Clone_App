@@ -6,6 +6,7 @@ import { Movie } from "../../type";
 
 export const useProps = (fetchUrl: string) => {
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [trailerUrl, setTrailerUrl] = useState<string | null>("");
 
   // ①APIの取得はuseEffectを使う
   useEffect(() => {
@@ -25,5 +26,18 @@ export const useProps = (fetchUrl: string) => {
     fetchData();
   }, [fetchUrl]);
 
-  return movies;
+  const handleClick = async (movie: Movie) => {
+    if (trailerUrl) {
+      setTrailerUrl("");
+    }else {
+      const moviePlayUrl = await axios.get(requests.fetchActionMoviesVideos(movie.id));
+      setTrailerUrl(moviePlayUrl.data.results[0]?.key);
+    };
+  };
+
+  return {
+    movies,
+    trailerUrl,
+    handleClick,
+  };
 };
