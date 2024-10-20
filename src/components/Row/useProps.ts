@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "../../axios";
 import { Movie } from "../../type";
+import { requests } from "../../request";
 
 // ②データの整形
 
@@ -30,7 +31,7 @@ export const useProps = (fetchUrl: string) => {
     if (trailerUrl) {
       setTrailerUrl("");
     }else {
-      const moviePlayUrl = await axios.get(requests.fetchActionMoviesVideos(movie.id));
+      const moviePlayUrl = await axios.get(requests.fetchMovieVideos(movie.id));
       setTrailerUrl(moviePlayUrl.data.results[0]?.key);
     };
   };

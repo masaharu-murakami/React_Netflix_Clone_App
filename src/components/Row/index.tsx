@@ -7,10 +7,16 @@ type Props = {
   isLargeRow?: boolean;
 };
 
-export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
-  const movies = useProps(fetchUrl);
+// export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
+//   const movies = useProps(fetchUrl);
 
+//   return (
+//     <Layout title={title} movies={movies} isLargeRow={isLargeRow} />
+//   );
+// };
+
+export const Row = ({ title, fetchUrl, isLargeRow }: Request) => {
   return (
-    <Layout title={title} movies={movies} isLargeRow={isLargeRow} />
+    <Layout title={title} isLargeRow={isLargeRow} {...useProps(fetchUrl)} />
   );
 };
